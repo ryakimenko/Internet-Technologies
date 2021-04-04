@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 2.4</TITLE>
+</HEAD> 
+<style>
+img{float: left;}
+</style>
+<BODY onload="SetDate();">
+<script language="JavaScript">
+
+var digits = new Array();
+    var i = 0;
+     
+    digits[0] = '0.gif';
+	digits[1] = '1.gif';
+	digits[2] = '2.gif';
+	digits[3] = '3.gif';
+	digits[4] = '4.gif';
+	digits[5] = '5.gif';
+	digits[6] = '6.gif';
+	digits[7] = '7.gif';
+	digits[8] = '8.gif';
+	digits[9] = '9.gif';
+	
+function SetDate()
+{
+	var now = new Date ();
+	var year = now.getFullYear();
+	var month = now.getMonth() + 1;
+	var day = now.getDate();
+	var min = now.getMinutes();
+	var hours = now.getHours();
+	var sec = now.getSeconds();
+	var k = 4;
+	while(k > 0){
+		var j = year % 10;
+		document.getElementById("year" + k).src = digits[j];
+		year = Math.floor(year/10);
+		k--;
+	}
+	k = 2;
+	while(k > 0){
+		var j = month % 10;
+		document.getElementById("month" + k).src = digits[j];
+		month = Math.floor(month/10);
+		k--;
+	}
+	k = 2;
+	while(k > 0){
+		var j = day % 10;
+		document.getElementById("day" + k).src = digits[j];
+		day = Math.floor(day/10);
+		k--;
+	}
+	k = 2;
+	while(k > 0){
+		var j = min % 10;
+		document.getElementById("minutes" + k).src = digits[j];
+		min = Math.floor(min/10);
+		k--;
+	}
+	k = 2;
+	while(k > 0){
+		var j = sec % 10;
+		document.getElementById("seconds" + k).src = digits[j];
+		sec = Math.floor(sec/10);
+		k--;
+	}
+	k = 2;
+	if (hours >= 12){
+		hours = hours - 12;
+		document.getElementById("am/pm").src = 'dgpm.gif';
+	}
+	else {
+		hours = hours;
+		document.getElementById("am/pm").src = 'dgam.gif';
+	}
+	while(k > 0){
+		var j = hours % 10;
+		document.getElementById("hours" + k).src = digits[j];
+		hours = Math.floor(hours/10);
+		k--;
+	}
+	setTimeout(SetDate, 1000);
+		
+}
+</script>
+<img id="hours1" src="">
+<img id="hours2" src="">
+<img id="column" src="dgc.gif">
+<img id="minutes1" src="">
+<img id="minutes2" src="">
+<img id="column2" src="dgc.gif">
+<img id="seconds1" src="">
+<img id="seconds2" src="">
+<img id="am/pm" src="dgam.gif">
+<img id="day1" src="">
+<img id="day2" src="">
+<img id="dot" src="dgp.gif">
+<img id="month1" src="">
+<img id="month2" src="">
+<img id="dot" src="dgp.gif">
+<img id="year1" src="">
+<img id="year2" src="">
+<img id="year3" src="">
+<img id="year4" src="">
+</BODY>
+</HTML>

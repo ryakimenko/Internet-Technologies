@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 3.3</TITLE>
+</HEAD> 
+<BODY onLoad="load_faculties()">
+<style>
+.window
+{
+    margin: auto;
+    text-align: center;
+}
+.subjectName
+{
+    text-align: left;
+}
+
+table
+{
+    margin: auto;
+    margin-top: 40px;
+}
+</style>
+<form style="text-align:center;">
+	Факультет:
+	<select id ="faculty"  onChange="clear1()">
+	</select>
+	Курс:
+	<select id="course"  onChange="clear2()">
+	</select>
+	Группа:
+	<select id="group" onChange="clear3()">
+	</select>
+	ФИО:
+	<select id="fullname">
+	</select><br>
+	<table border = 1 width = "500px">
+                <tr width = "15%">
+                    <td>Предмет</td><td>0</td><td>1</td><td>2</td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">Метрология, Стандартизация и Спецификация</td>
+                    <td><input type="radio" name ="metroStanSpec" value = "0"></td>
+					<td><input type="radio" name ="metroStanSpec" value = "1"></td>
+					<td><input type="radio" name ="metroStanSpec" value = "2"></td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">Объектно Ориентированное Программирование</td>
+                    <td><input type="radio" name = "oOP" value = "0"></td>
+					<td><input type="radio" name = "oOP" value = "1"></td>
+					<td><input type="radio" name = "oOP" value = "2"></td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">Архитектура Вычеслительных Систем</td>
+                    <td><input type="radio" name = "archSystem" value = "0"></td>
+					<td><input type="radio" name = "archSystem" value = "1"></td>
+					<td><input type="radio" name = "archSystem" value = "2"></td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">Теория Массового Обслуживания</td>
+                    <td><input type="radio" name = "theoryOfMass" value = "0"></td>
+					<td><input type="radio" name = "theoryOfMass" value = "1"></td>
+					<td><input type="radio" name = "theoryOfMass" value = "2"></td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">Экономика</td>
+                    <td><input type="radio" name = "economics" value = "0"></td>
+					<td><input type="radio" name = "economics" value = "1"></td>
+					<td><input type="radio" name = "economics" value = "2"></td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">База Данных</td>
+                    <td><input type="radio" name = "dataBase" value = "0"></td>
+					<td><input type="radio" name = "dataBase" value = "1"></td>
+					<td><input type="radio" name = "dataBase" value = "2"></td>
+                </tr>
+                <tr>
+                    <td class = "nameObject">Физическая Культура</td>
+                    <td><input type="radio" name = "sport" value = "0"></td>
+					<td><input type="radio" name = "sport" value = "1"></td>
+					<td><input type="radio" name = "sport" value = "2"></td>
+                </tr>
+
+    </table>
+	<p id = "answer"></p>
+	<p><input type = "button" value = "Посчитать баллы" onclick = "check()"></p>
+	<p><input type = "button" value = "Отменить расчеты" onclick = "cancelAll()"></p>
+</form>
+<script language="JavaScript">
+var count = 0;
+var allObject = 7;
+
+function cancelAll(){
+	count = 0;
+	document.getElementById("answer").innerHTML = " ";
+}
+
+function averageScore(){
+	var text = "Ваш средний балл равен " + (count / allObject).toFixed(3);
+	document.getElementById("answer").innerHTML = text;
+}
+
+function check(){
+	count = 0;
+	var buttons = document.getElementsByName("metroStanSpec");
+	for (let i = 0; i <buttons.length; i++){
+		if (buttons[i].checked){
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	buttons = document.getElementsByName("oOP");
+	for (let i = 0; i < buttons.length; i++){
+		if (buttons[i].checked) {
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	buttons = document.getElementsByName("archSystem");
+	for (let i = 0; i < buttons.length; i++){
+		if (buttons[i].checked) {
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	buttons = document.getElementsByName("theoryOfMass");
+	for (let i = 0; i < buttons.length; i++){
+		if (buttons[i].checked) {
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	buttons = document.getElementsByName("economics");
+	for (let i = 0; i < buttons.length; i++){
+		if (buttons[i].checked) {
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	buttons = document.getElementsByName("dataBase");
+	for (let i = 0; i < buttons.length; i++){
+		if (buttons[i].checked) {
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	buttons = document.getElementsByName("sport");
+	for (let i = 0; i < buttons.length; i++){
+		if (buttons[i].checked) {
+			count += parseInt(buttons[i].value,10);
+		}
+	}
+	averageScore()
+}
+var select_faculty = document.getElementById("faculty");
+var select_course = document.getElementById("course");
+var select_group = document.getElementById("group");
+var select_student = document.getElementById("fullname");
+let xml = new window.XMLHttpRequest();
+xml.open("GET","text.xml", false);
+xml.send();
+let xmlDoc = xml.responseXML;
+function load_faculties()
+{
+	let faculties = xmlDoc.getElementsByTagName("faculty");
+	for(let i = 0; i< faculties.length; i++){
+			let newOption = new Option(faculties[i].getAttribute("f_name"));
+			select_faculty.append(newOption);
+	}
+	load_courses();
+}
+function load_courses()
+{
+	let faculties = xmlDoc.getElementsByTagName("faculty");
+	let j = -1;
+	for(let i = 0; i< faculties.length; i++){
+	if((faculties[i].getAttribute("f_name")) == document.getElementById("faculty").value){
+		j = i;
+		break;
+	}
+	}
+	if(j == -1)
+		return;
+	let courses = faculties.item(j).getElementsByTagName("course");
+	for(let i = 0; i< courses.length; i++){
+		let newOption = new Option(courses[i].getAttribute("course_number"));
+		select_course.append(newOption);
+	}
+	load_groups();
+}
+
+function load_groups()
+{
+	let faculties = xmlDoc.getElementsByTagName("faculty");
+	let j = -1;
+	let k = -1;
+	for(let i = 0; i< faculties.length; i++){
+	if((faculties[i].getAttribute("f_name")) == document.getElementById("faculty").value){
+		j = i;
+		break;
+	}
+	}
+	if(j == -1)
+		return;
+	let courses = faculties.item(j).getElementsByTagName("course");
+	for(let i = 0; i< courses.length; i++){
+	if((courses[i].getAttribute("course_number")) == document.getElementById("course").value){
+		k = i;
+		break;
+	}
+	}
+	if(k == -1){
+		return;
+	}
+	let groups = courses.item(k).getElementsByTagName("group");
+	for(let i = 0; i< groups.length; i++){
+		let newOption = new Option(groups[i].getAttribute("g_name"));
+		select_group.append(newOption);
+	}
+	load_students();
+}
+function load_students()
+{	
+	let groups = xmlDoc.getElementsByTagName("group");
+	let j = -1;
+	for(let i = 0; i< groups.length; i++){
+	if((groups[i].getAttribute("g_name")) == document.getElementById("group").value){
+		j = i;
+		break;
+	}
+	}
+	if(j == -1)
+		return;
+	let students = groups.item(j).getElementsByTagName("student");
+	for(let i = 0; i< students.length; i++){
+		let newOption = new Option(students[i].getAttribute("fullname"));
+		select_student.append(newOption);
+	}
+}
+function clear(id){
+	document.getElementById(id).innerHTML='';
+}
+
+function clear1()
+{
+	clear("course");
+	clear("group");
+	clear("fullname");
+	load_courses();
+}
+function clear2()
+{
+	clear("group");
+	clear("fullname");
+	load_groups();
+}
+function clear3()
+{
+	clear("fullname");
+	load_students();
+}
+
+</script>
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 2.2</TITLE>
+</HEAD> 
+<BODY>
+<img src="s1.gif" id="img_main">
+<script language="JavaScript">
+var images = new Array();
+    var i = 0;
+     
+    images[0] = 's1.gif';
+    images[1] = 's2.gif';
+    images[2] = 's3.gif';
+	images[3] = 's4.gif';
+	images[4] = 's5.gif';
+	images[5] = 's6.gif';
+	images[6] = 's7.gif';
+	images[7] = 's8.gif';
+	images[8] = 's9.gif';
+	images[9] = 's10.gif';
+	images[10] = 's11.gif';
+	images[11] = 's12.gif';
+var time = 1000;
+var running = false;	
+var stop = setTimeout("viewImages()", time);
+    function viewImages() {
+		clearTimeout(stop);
+		if (!running){
+			return;
+		}
+        document.getElementById("img_main").src = images[i]; 
+        i++;
+        if (i == images.length) {
+            i = 0;
+        }
+		if(time < 0){
+		time = 0;
+		}
+       stop = setTimeout("viewImages()",time);
+    }   
+ function toggle(context){
+ 
+    if(context.value == 'Stop') {
+		running = false;
+        context.value =  'Start';
+    } else {
+		running = true;
+		viewImages();
+        context.value =  'Stop';
+    }
+    
+ }
+ function SpeedUp(){
+	time = time - 50;
+ }
+ function SpeedDown(){
+	time = time + 50;
+ }
+</script>
+<p></p>
+<input type="button" value="Slower" style="width: 5%; height: 5%; " onClick="SpeedDown();">
+<input type="button" value="Start" style="width: 5%; height: 5%; " onClick="toggle(this);">
+<input type="button" value="Faster" style="width: 5%; height: 5%; "onClick="SpeedUp();">
+</BODY>
+</HTML>

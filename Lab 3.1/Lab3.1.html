@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 3.1</TITLE>
+</HEAD> 
+<style>
+span {
+ background: #01796f;
+ color: #800080;
+ text-align: center;
+ height: 45px;
+ }
+
+ .menu {
+ padding-left: 8%;
+ padding-right: 8%;
+ position: relative;
+ top: 10px;
+ height:100px;
+ z-index: 1;
+ }
+
+ .submenu {
+ position: absolute;
+ top: 15px;
+ left: 127px;
+ z-index: 2;
+ height: 50;
+ width: 50;
+ background-color: #01796f;
+ border: 2px  solid black;
+ padding: 10px;
+ display: none;
+ }
+
+
+</style>
+<BODY>
+<span class="menu" onmouseover="ShomMenu('SubMenu1')" onmouseout="HideMenu('SubMenu1')">
+  Dropdown1
+  <div class="submenu" id = "SubMenu1">
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 1</a></div>
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 2</a></div>
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 3</a></div>
+  </div>
+</span>
+<span class="menu" onmouseover="ShomMenu('SubMenu2')" onmouseout="HideMenu('SubMenu2')">
+  Dropdown2
+  <div class="submenu" id = "SubMenu2">
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 1</a></div>
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 2</a></div>
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 3</a></div>
+  </div>
+</span>
+<span class="menu" onmouseover="ShomMenu('SubMenu3')" onmouseout="HideMenu('SubMenu3')">
+  Dropdown3
+  <div class="submenu" id = "SubMenu3">
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 1</a></div>
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 2</a></div>
+    <div><a href="#" onClick="ChangeBackGround()" onMouseOver="highlight_Link(this)"  onMouseOut="highlight_Link_Back(this)">Link 3</a></div>
+  </div>
+</span>
+<script language="JavaScript">
+function ChangeBackGround()
+{
+	document.body.style.background = '#' + Math.floor(Math.random() * 1000000);
+}
+
+function ShomMenu(id)
+{
+	document.getElementById(id).style.display = "block";
+}
+function HideMenu(id)
+{
+	document.getElementById(id).style.display = "none";
+}
+
+function highlight_Link(Link) {
+	Link.style.background="green";
+ }
+
+function highlight_Link_Back(Link) {
+	Link.style.background= "#01796f";
+}
+</script>
+</BODY>
+</HTML>

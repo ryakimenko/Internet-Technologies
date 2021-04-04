@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 2.1</TITLE>
+</HEAD> 
+<BODY>
+<form name="form1" align=center>
+<img src="1.jpg" id="pic1" width=49% height =48% align=left> 
+<img src="2.jpg" id="pic2" width=49% height =48% alighn=right>
+<input type="button" value="Swap the Images"  onClick="swap()" style="width: 18%; height: 10%; ">
+</form>
+<script language="JavaScript">
+function swap()
+{
+var tmp_img = pic1.src;
+pic1.src = pic2.src;
+pic2.src = tmp_img;
+}
+</script> 
+</BODY>
+</HTML>

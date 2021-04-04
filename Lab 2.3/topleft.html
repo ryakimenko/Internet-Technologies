@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<meta charset="UTF-8">
+<TITLE>Лабораторная 1.3</TITLE>
+</HEAD> 
+<style>
+  body { background: url(1.jpg);}
+</style>
+<BODY>
+<font color= black><h1 align=left>Вычисление площади</h1>
+<font size = "5"><br>Автоматичекси
+<br>
+<form>
+<p>Сторона:
+<input name="side" value = "" type= textbox oninput="Area(this.value)">
+<p>Площадь:
+<input name="area" value = "" type= textbox id = "area">
+</form>
+</font>
+</font>
+<script language = "JavaScript">
+
+function Area(context)
+{
+	var area = context * context;
+	document.getElementById("area").value = area;
+}
+</script>
+</BODY>
+</HTML>

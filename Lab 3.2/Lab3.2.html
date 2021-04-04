@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//RU">
+<HTML><HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
+<TITLE>Лабораторная 3.2</TITLE>
+</HEAD> 
+<style>
+</style>
+<BODY>
+<span id = "registred" style="display:none">
+<form>
+    <h1> COOKIE </h1>
+    <p> Привет, <span id="puthere"></span></p>
+    <p> Количество посещений этой страницы: <span id="puthere1"></span></p>
+    <p> Вы были на этой странице: <span id="puthere2"></span></p>
+    <p><input maxlength = "15" size = "30" id = "inputr"> </p>
+    <p><input type = "button" value = "Зарегистрироваться" onclick="updateandclear()"></p>
+    <p><input type = "button" value = "Обнулить посещения" onclick="refreshvisits()"> </p> 
+</form>
+</span>
+<span id = "nonregistred" style="display:none">
+<form>
+    <h1> COOKIE </h1>
+    <p> Привет, вы на этой странице первый раз, зарегистрируйтесь пожалуйста.</p>
+    <p> Для регистрации введите свое имя ниже:</p>
+    <p><input id="inputnr" maxlength = "15" size = "30"> </p>
+    <p><input type = "button" value = "Зарегистрироваться" onclick="CreateName(inputnr.value)"></p>
+</form>
+</span>
+<script language="JavaScript">
+var Today = new Date();
+if ( "" == document.cookie){
+	document.getElementById('nonregistred').style.display = 'inline';
+	document.getElementById('registred').style.display = 'none';
+	CreateVisits(1)
+	CreateLastVisit();
+}
+else{
+	if((getCookie("username")) == null ){
+		document.getElementById('nonregistred').style.display = 'inline';
+		document.getElementById('registred').style.display = 'none';
+	}
+	else{
+	document.getElementById('nonregistred').style.display = 'none';
+	document.getElementById('registred').style.display = 'inline';
+	document.getElementById('puthere').innerHTML = getCookie("username")+ '!';
+	var month, day, hours, minutes, seconds;
+	if((month = getCookie("lastvisitmon")-Today.getMonth())<0){month *= -1;}
+	if((day = getCookie("lastvisitd")-Today.getDay())<0){day *= -1;}
+	if((hours = getCookie("lastvisith")-Today.getHours())<0){hours *= -1;}
+	if((minutes = getCookie("lastvisitm")-Today.getMinutes())<0){minutes *= -1;}
+	if((seconds = getCookie("lastvisits")-Today.getSeconds())<0){seconds *= -1;}
+	document.getElementById('puthere1').innerHTML = Number(getCookie("visits"))+1;
+	document.getElementById('puthere2').innerHTML = month+ " месяцев, "+ day+ " дней, "+hours+ ' часов, '+ minutes+ ' минут, '+seconds+ ' секунд назад';
+	CreateVisits(Number(getCookie("visits"))+1);
+	CreateLastVisit();
+	}
+	
+}
+
+function CreateName(value)
+{
+	if(value == ""){return;}
+	var expireDate = new Date();
+    var today = new Date();
+	expireDate.setDate(365 + expireDate.getDate());
+	document.cookie = "username="+value+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+}
+
+function CreateLastVisit()
+{
+	var expireDate = new Date();
+    var today = new Date();
+	expireDate.setDate(365 + expireDate.getDate());
+	document.cookie = "lastvisitmon="+today.getMonth()+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+	document.cookie = "lastvisitd="+today.getDay()+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+	document.cookie = "lastvisith="+today.getHours()+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+	document.cookie = "lastvisitm="+today.getMinutes()+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+	document.cookie = "lastvisits="+today.getSeconds()+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+}
+
+function CreateVisits(visits)
+{
+	var expireDate = new Date();
+    var today = new Date();
+	expireDate.setDate(365 + expireDate.getDate());
+	document.cookie = "visits="+visits+"; "+ "expires=" + encodeURIComponent(expireDate.toGMTString()) + ";";
+}
+function getCookie(Name) {   
+	var search = Name + "="
+	if (document.cookie.length > 0) {
+		offset = document.cookie.indexOf(search)
+		if (offset != -1) {
+			offset += search.length
+			end = document.cookie.indexOf(";", offset)
+			if (end == -1)
+				end = document.cookie.length
+			return unescape(document.cookie.substring(offset, end))
+		}
+	}
+}
+function updateandclear()
+{
+	CreateName(document.getElementById('inputr').value);
+	document.getElementById('inputr').value = '';
+	document.getElementById('puthere').innerHTML = getCookie("username")+ '!';
+}
+function refreshvisits()
+{
+	CreateVisits(0);
+	document.getElementById('puthere1').innerHTML = Number(getCookie("visits"));
+}
+</script>
+</BODY>
+</HTML>

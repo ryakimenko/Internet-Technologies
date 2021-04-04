@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sibsutis>
+	<faculty f_name = "ИВТ">
+		<course course_number = "1">
+			<group g_name = "ИВ-021">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+			<group g_name = "ИВ-022">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+			<group g_name = "ИВ-023">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+		</course>
+		<course course_number = "2">
+			<group g_name = "ИВ-921">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+			<group g_name = "ИВ-922">
+				<student fullname = "Руденко Антон Сергеевич"></student>
+				<student fullname = "Зарипов Владислав Игоревич"></student>
+				<student fullname = "Якименко Роман Андреевич"></student>
+				<student fullname = "Зимин Данил Сергеевич"></student>
+				<student fullname = "Горбачев Илья Андреевич"></student>
+			</group>
+			<group g_name = "ИВ-923">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+		</course>
+		<course course_number = "3">
+			<group g_name = "ИВ-821">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+				</group>
+			<group g_name = "ИВ-822">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+				</group>
+			<group g_name = "ИВ-823">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+		</course>
+	</faculty>
+	<faculty f_name = "МРМ">
+		<course course_number = "1">
+			<group g_name = "A-52">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+			<group g_name = "A-53">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+		</course>
+		</faculty>
+	<faculty f_name = "МТС">
+		<course course_number = "1">
+			<group g_name = "АП-412">
+				<student fullname = "Студент 1"></student>
+				<student fullname = "Студент 2"></student>
+				<student fullname = "Студент 3"></student>
+				<student fullname = "Студент 4"></student>
+				<student fullname = "Студент 5"></student>
+			</group>
+		</course>
+	</faculty>
+</sibsutis>
